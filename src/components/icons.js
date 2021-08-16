@@ -14,6 +14,19 @@ export const AddIcon = ({ width = 16, height = 16, color = "#fff" }) => (
     <path d="M28 14H18V4a2 2 0 00-4 0v10H4a2 2 0 000 4h10v10a2 2 0 004 0V18h10a2 2 0 000-4z"></path>
   </svg>
 );
+export const DeleteIcon = ({ width = 40, height = 40, color = "#fff" }) => (
+  <svg
+    fill={color}
+    width={width}
+    height={height}
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    viewBox="0 0 80 80"
+    xmlSpace="preserve"
+  >
+    <path d="M52 33v29H28V33h24m5-5H23v39h34V28zM45 20v-3H35v3H20v5h40v-5H45z"></path>{" "}
+  </svg>
+);
 
 export const EditIcon = ({ width = 16, height = 16, color = "#fff" }) => (
   <svg

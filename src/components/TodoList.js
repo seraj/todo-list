@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import classNames from "classnames/bind";
 import Store from "../store/context";
 import { TodoHeader } from "./TodoHeader";
-import { EditIcon } from "./icons";
+import { DeleteIcon, EditIcon } from "./icons";
 export default function TodoList() {
   const { state, dispatch } = useContext(Store);
 
@@ -51,6 +51,14 @@ export default function TodoList() {
                   >
                     {todo?.state}
                   </button>
+                  <span
+                    onClick={() =>
+                      dispatch({ type: "COMPLETE", payload: todo })
+                    }
+                    className="float-end"
+                  >
+                    <DeleteIcon width={40} height={40} color="#000" />
+                  </span>
                   <span
                     onClick={() => dispatch({ type: "EDIT", payload: todo })}
                     className="float-end"
