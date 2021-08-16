@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useReducer } from "react";
+import Store from "./store/context";
+import reducer from "./store/reducer";
+import { usePersistedContext, usePersistedReducer } from "./store/usePersist";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 function App() {
+  const globalStore = usePersistedContext(useContext(Store), "state");
+  const [state, dispatch] = usePersistedReducer(
+    useReducer(reducer, globalStore),
+    "state"
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Store.Provider value={{ state, dispatch }}>
+      <div className="container">
+        <TodoForm />
+        <TodoList />
+      </div>
+    </Store.Provider>
   );
 }
 
